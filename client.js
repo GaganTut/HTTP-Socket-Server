@@ -14,7 +14,7 @@ if (hostName === undefined) {
     if (pathName === undefined) {
       process.stdout.write(`Type path as such: "node client.js localhost:8080/sample"`);
     } else {
-      console.log(pathName.length);
+      console.log(pathName);
       client.write(`GET ${pathName} HTTP/1.1`);
     }
 

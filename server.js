@@ -9,10 +9,12 @@ const server = net.createServer(request => {
     const method = requestLine[0];
     const path = requestLine[1];
     const httpVersion = requestLine[2];
-    console.log(path.length);
 
     switch (path) {
-      case '/' || '/index.html' :
+      case '/' :
+        displayIndex(request);
+        break;
+      case '/index.html' :
         displayIndex(request);
         break;
       case '/hydrogen.html' :
