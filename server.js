@@ -34,8 +34,8 @@ const server = net.createServer(request => {
 
 server.listen({port:8080});
 
-const writeHeader = (fileName, fileType) => {
-  return `HTTP/1.1 200 OK
+const writeHeader = (fileName, fileType, status) => {
+  return `HTTP/1.1 ${status}
 Content-Type: text/${fileType}
 Content-Length: ${fileName.length}
 Date: ${new Date().toUTCString()}
@@ -45,27 +45,27 @@ ${fileName}`;
 };
 
 const displayIndex = (request) => {
-  request.write(writeHeader(indexHTML, 'html'));
+  request.write(writeHeader(indexHTML, 'html', '200 OK'));
   request.end();
 };
 
 const display404 = (request) => {
-  request.write(writeHeader(page404HTML, 'html'));
+  request.write(writeHeader(page404HTML, 'html', '404 NOT FOUND'));
   request.end();
 };
 
 const displayHelium = (request) => {
-  request.write(writeHeader(heliumHTML, 'html'));
+  request.write(writeHeader(heliumHTML, 'html', '200 OK'));
   request.end();
 };
 
 const displayHydrogen = (request) => {
-  request.write(writeHeader(hydrogenHTML, 'html'));
+  request.write(writeHeader(hydrogenHTML, 'html', '200 OK'));
   request.end();
 };
 
 const displayCSS = (request) => {
-  request.write(writeHeader(stylesCSS, 'css'));
+  request.write(writeHeader(stylesCSS, 'css', '200 OK'));
   request.end();
 };
 
